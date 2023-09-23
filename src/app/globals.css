@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.bg-hero-img {
+    background-image: url('./(assets)/(imgs)/laptop-hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

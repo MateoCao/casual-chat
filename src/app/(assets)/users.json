@@ -1,0 +1,17 @@
+[
+    {
+        "nombre": "Mateo",
+        "edad": 24,
+        "sexo": "Masculino"
+    },
+    {
+        "nombre": "Abel",
+        "edad": 27,
+        "sexo": "Masculino"
+    },
+    {
+        "nombre": "Aixa",
+        "edad": 24,
+        "sexo": "Femenino"
+    }
+]
