@@ -1,37 +1,58 @@
 'use client'
-import { useState } from 'react'
+
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { registerSchema } from '../(utils)/registerSchema'
+import { addEntry } from '../api/_actions'
+import Link from 'next/link'
+import InputField from '../(components)/InputField'
+import formFieldsData from '../(data)/registerForm.json'
 
 function Register () {
-  const [users, setUsers] = useState([])
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const data = Object.fromEntries(new FormData(e.target))
-    const newUsers = [...users, data]
-    setUsers(newUsers)
-    e.target.reset()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({ resolver: zodResolver(registerSchema) })
+
+  const userRegister = async (data) => {
+    const result = await addEntry(data)
+    if (!result) {
+      console.log('Something went wrong')
+      return
+    }
+    if (result.error) {
+      console.log(result.error)
+      return
+    }
+    reset()
   }
+
   return (
-        <section>
-            <div>
-                <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                    <input name="name" />
-                    <input name="surname" />
-                    <input name="username" />
-                    <input name="email" type="email" />
-                    <input name="password" type="password"/>
-                    <button type="submit">Registrarme</button>
-                </form>
-            </div>
-            {users.length > 0 && users.map((user, i) => (
-                <div key={i}>
-                    <p>{user.name}</p>
-                    <p>{user.surname}</p>
-                    <p>{user.username}</p>
-                    <p>{user.email}</p>
-                    <p>{user.password}</p>
-                </div>
+    <div className='bg-white rounded shadow-xl flex flex-col gap-8 p-4 w-96'>
+        <h3 className='text-2xl font-semibold'>Registrate aquí</h3>
+        <form className="flex flex-col gap-2" onSubmit={handleSubmit(userRegister)}>
+            {formFieldsData.map(field => (
+                <InputField
+                key={field.name}
+                label={field.label}
+                id={field.id}
+                type={field.type}
+                register={register}
+                name={field.name}
+                autoComplete={field.autoComplete}
+                errors={errors}
+              />
             ))}
-        </section>
+
+            <input className='bg-sky-500 hover:bg-sky-600 rounded text-white font-semibold text-lg p-2 mt-2 cursor-pointer' type='submit' value="Registrarme" />
+        </form>
+        <div>
+            <p>¿Ya estás registrado? <Link href="/login" className='text-sky-700'>¡Inicia sesión aquí!</Link></p>
+            <Link href="/" className='text-sky-700'>Volver al inicio</Link>
+        </div>
+    </div>
   )
 }
 

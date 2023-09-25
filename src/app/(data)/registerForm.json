@@ -1,0 +1,38 @@
+[
+    {
+      "label": "Nombre",
+      "id": "name",
+      "type": "text",
+      "autoComplete": "given-name",
+      "name": "name"
+    },
+    {
+      "label": "Apellido",
+      "id": "lastname",
+      "type": "text",
+      "autoComplete": "family-name",
+      "name": "lastname"
+    },
+    {
+      "label": "Nombre de usuario",
+      "id": "username",
+      "type": "text",
+      "autoComplete": "username",
+      "name": "username"
+    },
+    {
+      "label": "Correo electrónico",
+      "id": "email",
+      "type": "email",
+      "autoComplete": "email",
+      "name": "email"
+    },
+    {
+      "label": "Contraseña",
+      "id": "password",
+      "type": "password",
+      "autoComplete": "new-password",
+      "name": "password"
+    }
+  ]
+  
