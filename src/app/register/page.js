@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { registerSchema } from '../(utils)/registerSchema'
-import { addEntry } from '../api/_actions'
+import { submitUser } from '../api/_actions'
 import Link from 'next/link'
 import InputField from '../(components)/InputField'
 import formFieldsData from '../(data)/registerForm.json'
@@ -17,7 +17,7 @@ function Register () {
   } = useForm({ resolver: zodResolver(registerSchema) })
 
   const userRegister = async (data) => {
-    const result = await addEntry(data)
+    const result = await submitUser(data)
     if (!result) {
       console.log('Something went wrong')
       return
@@ -46,10 +46,10 @@ function Register () {
               />
             ))}
 
-            <input className='bg-sky-500 hover:bg-sky-600 rounded text-white font-semibold text-lg p-2 mt-2 cursor-pointer' type='submit' value="Registrarme" />
+            <input className='bg-sky-500 hover:bg-sky-600 rounded text-white font-semibold text-lg p-2 mt-2 cursor-pointer duration-200' type='submit' value="Registrarme" />
         </form>
         <div>
-            <p>¿Ya estás registrado? <Link href="/login" className='text-sky-700'>¡Inicia sesión aquí!</Link></p>
+            <p>¿Ya estás registrado? <Link href="/login" className='text-sky-700'>¡Inicia sesión!</Link></p>
             <Link href="/" className='text-sky-700'>Volver al inicio</Link>
         </div>
     </div>

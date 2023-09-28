@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 export default function RootLayout ({ children }) {
   const pathname = usePathname()
 
-  if (pathname === '/register' | '/login') {
+  if (pathname === '/register' || pathname === '/login') {
     return (
     <html lang='en'>
       <body className='h-screen bg-gradient-to-r from-sky-400 to-purple-600 flex justify-center items-center'>
