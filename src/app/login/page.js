@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import login from '../api/_actions'
-import { loginSchema } from '../(utils)/loginSchema'
+import { loginSchema } from '../(utils)/schemas/loginSchema'
 import InputField from '../(components)/InputField'
 import formFieldsData from '../(data)/loginForm.json'
 import Link from 'next/link'

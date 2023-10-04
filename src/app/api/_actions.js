@@ -1,7 +1,7 @@
 'use server'
 
-import { loginSchema } from '../(utils)/loginSchema'
-import { registerSchema } from '../(utils)/registerSchema'
+import { loginSchema } from '../(utils)/schemas/loginSchema'
+import { registerSchema } from '../(utils)/schemas/registerSchema'
 
 export async function submitUser (data) {
   const result = registerSchema.safeParse(data)
